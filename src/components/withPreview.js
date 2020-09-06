@@ -5,7 +5,7 @@ import queryString from "query-string"
 const withPreview = (args = { preview: false }) => Component => {
   const preview = props => {
     const parsed = queryString.parse(props.location.search)
-    const { nonce, preview, slug } = parsed
+    const { nonce, preview, id } = parsed
 
     // Id needs to be an int for preview query.
     // const id = parseInt(id, 10)
@@ -24,7 +24,7 @@ const withPreview = (args = { preview: false }) => Component => {
       <Query
         query={args.preview}
         variables={{
-          slug,
+          id: parseInt(id),
           nonce,
         }}
       >

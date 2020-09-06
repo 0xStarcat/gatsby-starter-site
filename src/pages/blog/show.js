@@ -54,8 +54,8 @@ export const query = graphql`
 `
 
 const PREVIEW_QUERY = gql`
-  query BlogPreviewQuery($slug: String!) {
-    postBy(slug: $slug) {
+  query BlogPreviewQuery($id: Int!) {
+    postBy(postId: $id) {
       title
       revisions {
         nodes {
