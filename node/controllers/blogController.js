@@ -21,7 +21,7 @@ module.exports = {
           // Decide URL structure
           path: node.uri,
           // path to template
-          component: path.resolve(`./src/pages/blog/show.js`),
+          component: path.resolve(`./src/templates/blog/PostTemplate.js`),
           context: {
             // This is the $slug variable
             // passed to blog-post.js

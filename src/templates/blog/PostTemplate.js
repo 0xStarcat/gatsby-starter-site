@@ -6,7 +6,7 @@ import gql from "graphql-tag"
 
 import withPreview from "@components/withPreview"
 
-const blogShow = props => {
+const PostTemplate = props => {
   const post = props.preview
     ? props.preview.postBy.revisions.nodes[0] // grab the first revision
     : props.data.allWpPost.edges[0].node
@@ -79,4 +79,4 @@ const PREVIEW_QUERY = gql`
   }
 `
 
-export default withPreview({ preview: PREVIEW_QUERY })(blogShow)
+export default withPreview({ preview: PREVIEW_QUERY })(PostTemplate)
