@@ -22,6 +22,7 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   })
 }
 
-exports.createPages = ({ graphql, actions }) => {
-  blogController.show({ graphql, actions })
+exports.createPages = async ({ graphql, actions }) => {
+  await blogController.show({ graphql, actions })
+  await doctorController.show({ graphql, actions })
 }
