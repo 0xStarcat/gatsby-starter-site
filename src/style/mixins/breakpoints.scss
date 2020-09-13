@@ -1,0 +1,82 @@
+$breakpoints: (
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+@mixin mq($media-query) {
+  @media #{$media-query} {
+    @content;
+  }
+}
+
+@mixin mq-xsm-only {
+  @include mq("(max-width: #{map-get($breakpoints, sm) - 1px})") {
+    @content;
+  }
+}
+
+@mixin mq-sm {
+  @include mq("(min-width: #{map-get($breakpoints, sm)})") {
+    @content;
+  }
+}
+
+@mixin mq-sm-only {
+  @include mq("(max-width: #{map-get($breakpoints, md) - 1px})") {
+    @content;
+  }
+}
+
+@mixin mq-md {
+  @include mq("(min-width: #{map-get($breakpoints, md)})") {
+    @content;
+  }
+}
+
+@mixin mq-md-only {
+  @include mq(
+    "(min-width: #{map-get($breakpoints, md)}) and (max-width: #{map-get($breakpoints, lg) - 1px})"
+  ) {
+    @content;
+  }
+}
+
+@mixin mq-md-down {
+  @include mq("(max-width: #{map-get($breakpoints, lg) - 1px})") {
+    @content;
+  }
+}
+
+@mixin mq-lg {
+  @include mq("(min-width: #{map-get($breakpoints, lg)})") {
+    @content;
+  }
+}
+
+@mixin mq-lg-only {
+  @include mq(
+    "(min-width: #{map-get($breakpoints, lg)}) and (max-width: #{map-get($breakpoints, xl) - 1px})"
+  ) {
+    @content;
+  }
+}
+
+@mixin mq-lg-down {
+  @include mq("(max-width: #{map-get($breakpoints, xl) - 1px})") {
+    @content;
+  }
+}
+
+@mixin mq-xl-only {
+  @include mq("(min-width: #{map-get($breakpoints, xl)})") {
+    @content;
+  }
+}
+
+@mixin mq-xl {
+  @include mq("(min-width: #{map-get($breakpoints, xl)})") {
+    @content;
+  }
+}
