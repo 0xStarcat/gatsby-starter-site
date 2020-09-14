@@ -10,7 +10,7 @@ const PostTemplate = props => {
   const post = props.preview
     ? props.preview.postBy.revisions.nodes[0] // grab the first revision
     : props.data.allWpPost.edges[0].node
-  console.log(post)
+
   return (
     <Layout>
       <div>

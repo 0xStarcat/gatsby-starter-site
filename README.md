@@ -13,6 +13,7 @@ The wordpress instance for this site requires the following plugins:
 - [wp-graphql-acf](https://github.com/wp-graphql/wp-graphql-acf)
 - [wp-graphql-custom-post-type-ui](https://github.com/wp-graphql/wp-graphql-custom-post-type-ui)
 - [permalinks customizer](https://wordpress.org/plugins/permalinks-customizer/)
+- [advanced custom fields](https://www.advancedcustomfields.com/)
 
 ## Setting up Live Preview
 
@@ -41,3 +42,22 @@ Create:
 - `.env.development`
 
 You can copy and paste the `.example.env` file as a template for the variables you'll need.
+
+## Wordpress Record Dependencies
+
+The site depends on certain records w/ specific attribute values existing to function. All components with such dependencies render an error message w/ solution on the live page if the dependency is not met.
+
+1. Menus
+
+- A menu with `name` of "Primary Menu" => `PrimaryMenu/index.js`
+- A menu with `name` of "FooterLinks" => `FooterLinks/index.js`
+
+2. Pages
+
+Each wordpress page should include a field that's accessed by `node.acfPageMeta.pageTemplate` who's value should exactly match a directory within `/src/templates/<pageTemplate>`. This requires you to setup an ACF field group for each page which defines its metadata with a graphql field named `acfPageMeta`.
+
+The template would need to live at `/src/templates/<pageTemplate>/index.js`.
+
+Gatsby will then auto-generate all routes and pages by this convention.
+
+The template will query all pages which use the template and you can filter them by various parameters (uri, language, etc) to correlate the correct page data with the route.

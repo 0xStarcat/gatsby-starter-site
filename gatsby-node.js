@@ -7,6 +7,7 @@
 // You can delete this file if you're not using it
 
 const blogController = require("./node/controllers/blogController.js")
+const pagesController = require("./node/controllers/pagesController.js")
 
 const path = require(`path`)
 
@@ -25,6 +26,6 @@ exports.onCreateWebpackConfig = ({ actions }) => {
 }
 
 exports.createPages = async ({ graphql, actions }) => {
+  await pagesController.show({ graphql, actions })
   await blogController.show({ graphql, actions })
-  await doctorController.show({ graphql, actions })
 }
